@@ -1,0 +1,108 @@
+//Array Implementation of Stack
+#include<stdio.h>
+#include<conio.h>
+#define MAX 10
+
+typedef struct{
+		int items[MAX];
+		int top;
+		} stack;
+
+		//creating a empty stack
+void create_empty_stack(stack *s);
+void push(stack *s, int);
+void pop(stack *s);
+void display(stack *s);
+//Main Funtion
+int main()
+     {
+	     stack *s;
+	     int element, choice;
+	     int flag=1;
+	     clrscr();
+
+
+create_empty_stack(s) ;
+do{
+printf("\n\n \t    Enter your choice");
+printf("\n\n\t	1: PUSH the elements:");
+printf("\n\n\t 	2: TO display the elements");
+printf("\n\n\t	3: POP the element");
+printf("\n\n\t	4: EXIT");
+printf("\n\n\t  Enter your choice: \t");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+printf("Enter the number:");
+scanf("%d",&element);
+push(s, element);
+break;
+case 2:
+display(s);
+break;
+case 3:
+pop(s);
+break;
+case 4:
+flag=0;
+break;
+default:
+printf("\n Invalid choice");
+}
+}
+while(flag);
+
+//getch();
+return 0;
+}
+  void create_empty_stack(stack *s)
+  { s->top=-1;
+  }
+  //check for empty or not
+int isempty(stack *s)
+{
+if(s->top<0)
+return 0;
+}
+//check for full or not
+int isfull(stack *s)
+{
+if(s->top==MAX-1)
+return 1;
+else return 0;
+}
+//PUSH
+void push(stack *s, int element)
+{
+if(isfull(s))
+printf("STACK FULL:please Empty the STACK!!!\n");
+else
+s->items[++(s->top)]=element;
+}
+//DISPLAYING
+void display(stack *s)
+{
+int i;
+if(isempty(s))
+printf("\n The STACK doesnot contain elements");
+else
+{
+printf("\n The elements in the STACK are:\n");
+for(i=s->top;i>=0;i--)
+printf("%d\n",s->items[i]);
+}
+}
+//POP
+void pop(stack *s)
+{
+if (isempty(s))
+printf("\\nStack Underflow: Stack is empty!!!");
+else
+printf("\n\n The delected item is %d:\t",s->items[s->top--]); //delect top element and decrease top by 1
+}
+
+
+
+
+
